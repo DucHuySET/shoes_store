@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'd:\CTARG_Project\Python\may_1\lib\ui\confirm_dialog.ui'
+# Form implementation generated from reading ui file '.\lib\ui\confirm_dialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #

@@ -1,5 +1,5 @@
 import sys
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\product\model')
+sys.path.append('.\lib\modules\product\model')
 from product_model import ProductModel
 import mysql.connector as connector
 

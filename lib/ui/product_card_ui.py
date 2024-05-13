@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'd:\CTARG_Project\Python\may_1\lib\ui\product_card.ui'
+# Form implementation generated from reading ui file '.\lib\ui\product_card.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #

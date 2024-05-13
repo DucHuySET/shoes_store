@@ -1,7 +1,7 @@
 
 import sys
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\product\model')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\product\\repository')
+sys.path.append('.\lib\modules\product\model')
+sys.path.append('.\lib\modules\product\\repository')
 
 from product_repository import ProductRepository
 from product_model import ProductModel

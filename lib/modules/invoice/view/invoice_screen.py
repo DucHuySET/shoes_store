@@ -1,8 +1,8 @@
 
 import sys
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\invoice\model')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\invoice\controller')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\\ui')
+sys.path.append('.\lib\modules\invoice\model')
+sys.path.append('.\lib\modules\invoice\controller')
+sys.path.append('.\lib\\ui')
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QDialog, QVBoxLayout, QLabel, QDialogButtonBox, QHBoxLayout, QFrame
@@ -113,7 +113,13 @@ class InvoiceScreen (QWidget):
         self.ui.checkBox.setChecked(True)
     def setInvoice(self):
         # self.ui.name_field.set
-        pass
+        indexStaff = 0
+        for i in range(len(self.controller.staffCtrl.listStaff)):
+            if (self.controller.staffCtrl.listStaff[i].staff_id == self.controller.selectedInvoice.staff_id):
+                indexStaff = i
+                break
+        self.ui.combo_staff.setCurrentIndex(indexStaff)
+
     def delete(self):
         self.controller.deleteInvoice(self.controller.selectedInvoice.invoice_id)
     

@@ -1,12 +1,12 @@
 
 import sys
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\home\controller')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\home\\view')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\staff\\view')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\product\\view')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\invoice\\view')
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\\ui')
-sys.path.append("D:\CTARG_Project\Python\may_1\lib\core")
+sys.path.append('.\lib\modules\home\controller')
+sys.path.append('.\lib\modules\home\\view')
+sys.path.append('.\lib\modules\staff\\view')
+sys.path.append('.\lib\modules\product\\view')
+sys.path.append('.\lib\modules\invoice\\view')
+sys.path.append('.\lib\\ui')
+sys.path.append(".\lib\core")
 
 from home_view import Ui_HomeScreen as view
 from home_controller import HomeController as controller

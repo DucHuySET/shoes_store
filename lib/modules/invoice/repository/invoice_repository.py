@@ -1,5 +1,5 @@
 import sys
-sys.path.append('D:\CTARG_Project\Python\may_1\lib\modules\invoice\model')
+sys.path.append('.\lib\modules\invoice\model')
 from invoice_model import InvoiceModel
 from invoice_detail_model import InvoiceDetailModel
 from invoice_full import InvoiceFull
