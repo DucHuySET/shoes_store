@@ -31,6 +31,8 @@ class InvoiceController(QObject):
         self.listInvoices = self.repository.getAllInvoices()
     def fetchListProduct(self):
         self.listProduct = self.productCtrl.repository.getAllProducts()
+    def fetchListInvoiceDetail(self):
+        self.listInvoiceDetail = self.repository.getInvoiceDetail(self.selectedInvoice.invoice_id)
 
     def setInvoice(self, invoice):
         if self.selectedInvoice != invoice:
@@ -48,7 +50,7 @@ class InvoiceController(QObject):
                     self.listInvoiceDetail[i].quantity += 1
                     break
         else:
-            invoiceDetail = InvoiceDetailModel(product_id=prod.product_id, invoice_id=self.invoiceId, quantity=1)
+            invoiceDetail = InvoiceDetailModel(product_id=prod.product_id, invoice_id=self.selectedInvoice.invoice_id, quantity=1)
             self.listInvoiceDetail.append(invoiceDetail)
         self.signalAddProd.emit()
         

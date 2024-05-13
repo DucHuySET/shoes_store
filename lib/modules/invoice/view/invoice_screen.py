@@ -119,6 +119,9 @@ class InvoiceScreen (QWidget):
                 indexStaff = i
                 break
         self.ui.combo_staff.setCurrentIndex(indexStaff)
+        self.ui.combo_pay.setCurrentText(self.controller.selectedInvoice.payments)
+        self.controller.fetchListInvoiceDetail()
+        self.viewListInvoiceDetail()
 
     def delete(self):
         self.controller.deleteInvoice(self.controller.selectedInvoice.invoice_id)

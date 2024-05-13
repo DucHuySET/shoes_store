@@ -1,5 +1,7 @@
 import sys
 sys.path.append('.\lib\modules\invoice\model')
+sys.path.append('.\lib\core')
+from database_config import DatabaseConfig
 from invoice_model import InvoiceModel
 from invoice_detail_model import InvoiceDetailModel
 from invoice_full import InvoiceFull
@@ -8,11 +10,11 @@ import mysql.connector as connector
 class InvoiceRepository:
     def __init__(self):
         self.db = connector.connect(
-            host="localhost",
-            port="3306",
-            user="root",
-            password="123456aZ@",
-            database="QLCH_SHOES"
+            host=DatabaseConfig().host,
+            port=DatabaseConfig().port,
+            user=DatabaseConfig().user,
+            password=DatabaseConfig().password,
+            database=DatabaseConfig().database
         )
         self.cursor = self.db.cursor()
 
@@ -67,3 +69,12 @@ class InvoiceRepository:
         self.cursor.execute(query, (staffId, ))
         staffName = self.cursor.fetchone()
         return staffName
+    def getInvoiceDetail(self, invoice_id):
+        query = "SELECT * FROM INVOICE_DETAILS WHERE InvoiceId = %s"
+        self.cursor.execute(query, (invoice_id, ))
+        list_data = self.cursor.fetchall()
+        list_invoice_detail = []
+        for e in list_data:
+            invoice_detail = InvoiceDetailModel.from_row(e)
+            list_invoice_detail.append(invoice_detail)
+        return list_invoice_detail

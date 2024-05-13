@@ -1,16 +1,18 @@
 import sys
 sys.path.append('.\lib\modules\product\model')
+sys.path.append('.\lib\core')
+from database_config import DatabaseConfig
 from product_model import ProductModel
 import mysql.connector as connector
 
 class ProductRepository:
     def __init__(self):
         self.db = connector.connect(
-            host="localhost",
-            port="3306",
-            user="root",
-            password="123456aZ@",
-            database="QLCH_SHOES"
+            host=DatabaseConfig().host,
+            port=DatabaseConfig().port,
+            user=DatabaseConfig().user,
+            password=DatabaseConfig().password,
+            database=DatabaseConfig().database
         )
         self.cursor = self.db.cursor()
 

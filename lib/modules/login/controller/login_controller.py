@@ -1,4 +1,6 @@
-
+import sys
+sys.path.append('.\lib\core')
+from database_config import DatabaseConfig
 import mysql.connector as connector
 
 from lib.modules.login.model.user_model import StaffModel
@@ -7,7 +9,7 @@ class LoginController:
     
     def __init__(self) -> None:
         self.isAdmin = False
-        self.db = connector.connect(host = "localhost", port = "3306", user = "root", password = "123456aZ@", database = "QLCH_SHOES")
+        self.db = connector.connect(host = DatabaseConfig().host, port = DatabaseConfig().port, user = DatabaseConfig().user, password = DatabaseConfig().password, database = DatabaseConfig().database)
         self.cursor = self.db.cursor()
     # def __delattr__(self, name: str) -> None:
     #     pass

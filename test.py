@@ -1,6 +1,6 @@
 import mysql.connector as connector
 
-db = connector.connect(host = "localhost", port = "3306", user = "root", password = "123456aZ@", database = "QLCH_SHOES")
+db = connector.connect(host = DatabaseConfig().host, port = DatabaseConfig().port, user = DatabaseConfig().user, password = DatabaseConfig().password, database = DatabaseConfig().database)
 print(db)
 cursor = db.cursor()
 # select statement for tblemployee which returns all columns

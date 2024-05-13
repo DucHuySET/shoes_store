@@ -1,12 +1,15 @@
 import sys
 sys.path.append('.\lib\modules\staff\model')
+sys.path.append('.\lib\core')
+from database_config import DatabaseConfig
 from staff_model import StaffModel
 import mysql.connector as connector
 
 
+
 class StaffRepository:
     def __init__(self) -> None:
-        self.db = connector.connect(host = "localhost", port = "3306", user = "root", password = "123456aZ@", database = "QLCH_SHOES")
+        self.db = connector.connect(host = DatabaseConfig().host, port = DatabaseConfig().port, user = DatabaseConfig().user, password = DatabaseConfig().password, database = DatabaseConfig().database)
         self.cursor = self.db.cursor()
 
     def getAllStaff(self):
