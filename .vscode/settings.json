@@ -1,0 +1,22 @@
+{
+    "python.analysis.extraPaths": [
+        "./lib/modules/login/controller",
+        "./lib/modules/login/view",
+        "./lib/modules/home/view",
+        "./lib/modules/home/controller",
+        "./lib/modules/staff/view",
+        "./lib/modules/staff/model",
+        "./lib/modules/staff/repository",
+        "./lib/modules/staff/controller",
+        "./lib/ui",
+        "./lib/modules/product/model",
+        "./lib/modules/product/repository",
+        "./lib/modules/product/view",
+        "./lib/modules/product/controller",
+        "./lib/core",
+        "./lib/modules/invoice/model",
+        "./lib/modules/invoice/repository",
+        "./lib/modules/invoice/controller",
+        "./lib/modules/invoice/view"
+    ]
+}
