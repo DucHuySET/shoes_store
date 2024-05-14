@@ -79,4 +79,34 @@ FOREIGN KEY (ProductId) REFERENCES PRODUCT(ProductId);
 ALTER TABLE INVOICE ADD CONSTRAINT fk_StaffIdV2
 FOREIGN KEY (StaffId) REFERENCES STAFF(StaffId);
 
+INSERT INTO STAFF (
+	StaffId,
+    StaffName,
+    StaffAddress,
+    StaffRole,
+    StaffPhone,
+    RankSalary,
+    BankAccNumber,
+    BankName,
+    Status_,
+    Username,
+    Password_,
+    isAdmin 
+)
+VALUES (
+"0001",
+"Nguyễn Thành Tài",
+"Bach khoa",
+"Admin",
+"0987654321",
+10,
+987654321,
+"vietin",
+1,
+"ntt01",
+"123456",
+1
+)
 
+INSERT INTO CUSTOMER (CustomerId, CustomerName, CustomerPhone, CustomerEmail, CustomerAddress)
+VALUES ('0', 'Customer', 123456789, 'cus_mail@gmail.com', ' ');
