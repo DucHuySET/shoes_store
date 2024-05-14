@@ -1,5 +1,5 @@
 import sys
-sys.path.append(".\lib\core")
+sys.path.append(".\\lib\core")
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QStackedWidget
 from lib.modules.login.view.login_screen import LoginScreen

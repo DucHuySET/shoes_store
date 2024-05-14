@@ -1,8 +1,8 @@
 import sys
-sys.path.append('.\lib\modules\login\controller')
-sys.path.append('.\lib\modules\login\\view')
-sys.path.append('.\lib\modules\home\\view')
-sys.path.append(".\lib\core")
+sys.path.append('.\\lib\modules\login\controller')
+sys.path.append('.\\lib\modules\login\\view')
+sys.path.append('.\\lib\modules\home\\view')
+sys.path.append(".\\lib\core")
 from login_controller import LoginController as controller
 from login_view import Ui_LoginView as view
 from PyQt5.QtWidgets import QMainWindow

@@ -1,9 +1,9 @@
 
 import sys
-sys.path.append('.\lib\modules\invoice\\repository')
-sys.path.append('.\lib\modules\invoice\\model')
-sys.path.append('.\lib\modules\product\controller')
-sys.path.append('.\lib\modules\staff\controller')
+sys.path.append('.\\lib\modules\invoice\\repository')
+sys.path.append('.\\lib\modules\invoice\\model')
+sys.path.append('.\\lib\modules\product\controller')
+sys.path.append('.\\lib\modules\staff\controller')
 
 from invoice_repository import InvoiceRepository
 from invoice_model import InvoiceModel

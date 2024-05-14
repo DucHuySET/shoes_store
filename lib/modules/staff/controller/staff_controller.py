@@ -1,6 +1,6 @@
 import sys
-sys.path.append('.\lib\modules\staff\model')
-sys.path.append('.\lib\modules\staff\\repository')
+sys.path.append('.\\lib\modules\staff\model')
+sys.path.append('.\\lib\modules\staff\\repository')
 
 from staff_repository import StaffRepository
 from staff_model import StaffModel

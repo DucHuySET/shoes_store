@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\lib\ui\grid_view.ui'
+# Form implementation generated from reading ui file '.\\lib\ui\grid_view.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #

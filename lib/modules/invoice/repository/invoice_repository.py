@@ -1,6 +1,6 @@
 import sys
-sys.path.append('.\lib\modules\invoice\model')
-sys.path.append('.\lib\core')
+sys.path.append('.\\lib\modules\invoice\model')
+sys.path.append('.\\lib\core')
 from database_config import DatabaseConfig
 from invoice_model import InvoiceModel
 from invoice_detail_model import InvoiceDetailModel

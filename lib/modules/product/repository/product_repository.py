@@ -1,6 +1,6 @@
 import sys
-sys.path.append('.\lib\modules\product\model')
-sys.path.append('.\lib\core')
+sys.path.append('.\\lib\modules\product\model')
+sys.path.append('.\\lib\core')
 from database_config import DatabaseConfig
 from product_model import ProductModel
 import mysql.connector as connector

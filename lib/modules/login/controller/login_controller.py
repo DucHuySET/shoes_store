@@ -1,5 +1,5 @@
 import sys
-sys.path.append('.\lib\core')
+sys.path.append('.\\lib\core')
 from database_config import DatabaseConfig
 import mysql.connector as connector
 

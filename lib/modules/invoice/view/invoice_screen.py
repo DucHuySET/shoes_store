@@ -1,8 +1,8 @@
 
 import sys
-sys.path.append('.\lib\modules\invoice\model')
-sys.path.append('.\lib\modules\invoice\controller')
-sys.path.append('.\lib\\ui')
+sys.path.append('.\\lib\modules\invoice\model')
+sys.path.append('.\\lib\modules\invoice\controller')
+sys.path.append('.\\lib\\ui')
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QDialog, QVBoxLayout, QLabel, QDialogButtonBox, QHBoxLayout, QFrame
