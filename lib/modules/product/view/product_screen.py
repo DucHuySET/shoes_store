@@ -25,7 +25,7 @@ class ProductScreen (QWidget):
         self.ui = Ui_product_tab()
         self.ui.setupUi(self)
         self.viewProduct()
-        self.ui.button_add.clicked.connect(self.gotoEditForm)
+        self.ui.button_add.clicked.connect(self.goToAdd)
         self.ui.button_save.clicked.connect(self.save)
         self.ui.button_cancel.clicked.connect(self.cancel)
         self.ui.button_edit.clicked.connect(self.gotoEditCurrentItem)
@@ -54,6 +54,9 @@ class ProductScreen (QWidget):
     def gotoDetail(self):
         if (self.ui.stackedWidget.currentIndex() == 1):
             self.ui.stackedWidget.setCurrentIndex(self.ui.stackedWidget.currentIndex()-1)
+    def goToAdd(self):
+        self.gotoEditForm()
+        self.mode = 0
     def gotoEditForm(self):
         if (self.ui.stackedWidget.currentIndex() == 0):
             self.ui.stackedWidget.setCurrentIndex(self.ui.stackedWidget.currentIndex()+1)
@@ -80,7 +83,8 @@ class ProductScreen (QWidget):
     def save(self):
         result = False
         if (self.mode == 0):
-            product = ProductModel(product_id=str(int(self.controller.listProducts[len(self.controller.listProducts)-1].product_id) + 1),
+            prod_id = self.createNewProdId()
+            product = ProductModel(product_id=prod_id,
                                    product_name=self.ui.name_field.text(),
                                    product_price=self.ui.price_field.text(),
                                    product_description=self.ui.des_field.text())
@@ -107,7 +111,13 @@ class ProductScreen (QWidget):
         if self.dialog.exec():
             self.controller.deleteProduct(self.controller.selectedProduct.product_id)
             self.refresh()
-            self.gotoEditForm()
+            self.goToAdd()
+    def createNewProdId(self):
+        id = 0
+        for e in self.controller.listProducts:
+            if e.product_id >= id:
+                id = e.product_id + 1
+        return id
 
 class ProductCard(QWidget):
     def __init__(self, data, controller):

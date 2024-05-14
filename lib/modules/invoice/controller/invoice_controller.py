@@ -21,14 +21,17 @@ class InvoiceController(QObject):
         super().__init__()
         self.selectedInvoice = None
         self.listInvoiceDetail = []
+        self.isEditMode = False
+        
         self.repository = InvoiceRepository()
         self.productCtrl = ProductController()
         self.staffCtrl = StaffController()
         self.fetchListInvoices()
         self.fetchListProduct()
+        self.invoice_id = len(self.listInvoiceFull) + 1
 
     def fetchListInvoices(self):
-        self.listInvoices = self.repository.getAllInvoices()
+        self.listInvoiceFull = self.repository.getAllInvoices()
     def fetchListProduct(self):
         self.listProduct = self.productCtrl.repository.getAllProducts()
     def fetchListInvoiceDetail(self):
@@ -50,8 +53,13 @@ class InvoiceController(QObject):
                     self.listInvoiceDetail[i].quantity += 1
                     break
         else:
-            invoiceDetail = InvoiceDetailModel(product_id=prod.product_id, invoice_id=self.selectedInvoice.invoice_id, quantity=1)
-            self.listInvoiceDetail.append(invoiceDetail)
+            if (self.isEditMode):
+                invoiceDetail = InvoiceDetailModel(product_id=prod.product_id, invoice_id=self.selectedInvoice.invoice_id, quantity=1)
+                self.listInvoiceDetail.append(invoiceDetail)
+            else:
+                invoiceDetail = InvoiceDetailModel(product_id=prod.product_id, invoice_id=self.invoice_id, quantity=1)
+                self.listInvoiceDetail.append(invoiceDetail)
+            
         self.signalAddProd.emit()
         
 
@@ -64,9 +72,12 @@ class InvoiceController(QObject):
         except:
             return False
 
-    def updateInvoice(self, invoice):
+    def updateInvoice(self, invoiceFull):
         try:
-            self.repository.updateInvoice(invoice)
+            self.repository.updateInvoice(invoiceFull.invoice_model)
+            self.repository.deleteInvoiceDetailById(invoiceFull.invoice_model.invoice_id)
+            for e in invoiceFull.list_detail:
+                self.repository.createInvoiceDetail(e)
             return True
         except:
             return False
@@ -78,3 +89,8 @@ class InvoiceController(QObject):
             return True
         except:
             return False
+    def handleChangeSpinBox(self, invoice_id, product_id, quantity):
+        for i in range(len(self.listInvoiceDetail)):
+            if (self.listInvoiceDetail[i].invoice_id == invoice_id and self.listInvoiceDetail[i].product_id == product_id):
+                self.listInvoiceDetail[i].quantity = quantity
+        self.signalAddProd.emit()

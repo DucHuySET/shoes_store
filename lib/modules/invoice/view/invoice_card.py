@@ -15,6 +15,7 @@ class Ui_invoice_card(object):
     def setupUi(self, invoice_card):
         invoice_card.setObjectName("invoice_card")
         invoice_card.resize(400, 300)
+        invoice_card.setMaximumSize(QtCore.QSize(16777215, 300))
         self.verticalLayout = QtWidgets.QVBoxLayout(invoice_card)
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame = QtWidgets.QFrame(invoice_card)

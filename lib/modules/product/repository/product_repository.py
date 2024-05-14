@@ -47,3 +47,5 @@ class ProductRepository:
         self.cursor.execute(query, (product_id,))
         nameList = self.cursor.fetchone()
         return nameList[0]
+    def reconnect(self):
+        self.db.reconnect()
