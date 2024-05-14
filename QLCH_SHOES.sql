@@ -14,7 +14,7 @@ CREATE TABLE CUSTOMER(
 
 DROP TABLE IF EXISTS INVOICE;
 CREATE TABLE INVOICE (
-	InvoiceId CHAR(4) PRIMARY KEY,
+	InvoiceId INT PRIMARY KEY,
     CustomerId CHAR(4),
     StaffId CHAR(4) ,
     Payments NVARCHAR(50),
@@ -25,7 +25,7 @@ CREATE TABLE INVOICE (
 
 DROP TABLE IF EXISTS PRODUCT;
 CREATE TABLE PRODUCT (
-	ProductId CHAR(4) PRIMARY KEY,
+	ProductId INT PRIMARY KEY,
     ProductName NVARCHAR(30),
     ProductDescription NVARCHAR(50),
     ProductPrice INT
@@ -49,8 +49,8 @@ CREATE TABLE STAFF (
 
 DROP TABLE IF EXISTS INVOICE_DETAILS;
 CREATE TABLE INVOICE_DETAILS (
-	ProductId CHAR(4) ,
-    InvoiceId CHAR(4) ,
+	ProductId INT ,
+    InvoiceId INT ,
     Quantity INT ,
     
     PRIMARY KEY(ProductId, InvoiceId)
