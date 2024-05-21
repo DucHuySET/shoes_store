@@ -3,6 +3,8 @@ import sys
 sys.path.append('.\\lib\modules\invoice\model')
 sys.path.append('.\\lib\modules\invoice\controller')
 sys.path.append('.\\lib\\ui')
+sys.path.append(".\\lib\core")
+from app_controller import AppController
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QDialog, QVBoxLayout, QLabel, QDialogButtonBox, QHBoxLayout, QFrame
@@ -27,6 +29,7 @@ class InvoiceScreen (QWidget):
         self.controller = InvoiceController()
         self.controller.signalSelectInvoice.connect(self.setInvoiceDetailView)
         self.controller.signalAddProd.connect(self.viewListInvoiceDetailEdit)
+        self.appController = AppController()
 
         self.ui = Ui_invoice()
         self.ui.setupUi(self)
@@ -179,6 +182,7 @@ class InvoiceScreen (QWidget):
         self.controller.fetchListProduct()
         self.viewInvoice()
         self.viewProduct()
+        self.appController.refreshHomeStat()
     
 
 

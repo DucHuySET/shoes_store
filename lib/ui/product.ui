@@ -212,7 +212,7 @@ border-radius: 5px;</string>
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="detail_page">
             <layout class="QHBoxLayout" name="horizontalLayout_13">

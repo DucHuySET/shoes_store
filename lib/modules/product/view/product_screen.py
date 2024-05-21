@@ -3,6 +3,8 @@ import sys
 sys.path.append('.\\lib\modules\product\model')
 sys.path.append('.\\lib\modules\product\controller')
 sys.path.append('.\\lib\\ui')
+sys.path.append(".\\lib\core")
+from app_controller import AppController
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QDialog, QVBoxLayout, QLabel, QDialogButtonBox, QHBoxLayout, QFrame
@@ -21,6 +23,7 @@ class ProductScreen (QWidget):
         self.mode = 0
         self.controller = ProductController()
         self.controller.signalSelectProduct.connect(self.showDetail)
+        self.appController = AppController()
 
         self.ui = Ui_product_tab()
         self.ui.setupUi(self)
@@ -80,6 +83,7 @@ class ProductScreen (QWidget):
         self.clearLayout(self.ui.gridLayout)
         self.controller.fetchListProducts()
         self.viewProduct()
+        self.appController.refreshHomeStat()
     def save(self):
         result = False
         if (self.mode == 0):
