@@ -101,13 +101,19 @@ class InvoiceScreen (QWidget):
         self.ui.combo_pay.setCurrentIndex(0)
         self.controller.listInvoiceDetail.clear()
         self.ui.total_field.clear()
+        self.ui.name_field.clear()
         self.viewListInvoiceDetailEdit()
     def save(self):
         now = datetime.datetime.now()
         staffIndex = self.ui.combo_staff.currentIndex()
         invoice_id_new = self.createNewInvoiceId()
+        cus_name = ""
+        if (len(self.ui.name_field.text()) == 0):
+            cus_name = "Khách lẻ"
+        else:
+            cus_name = self.ui.name_field.text()
         invoiceModel = InvoiceModel(invoice_id=self.controller.invoice_id,
-                                     customer_id= "0",
+                                     customer_name= cus_name,
                                     staff_id=self.controller.staffCtrl.listStaff[staffIndex].staff_id,
                                     payments=self.ui.combo_pay.currentText(), 
                                     total=int(self.ui.total_field.text()),
@@ -155,7 +161,7 @@ class InvoiceScreen (QWidget):
         self.gotoDetail()
         self.clearLayout(self.ui.detailPage_listProd)
         invoice_model = self.controller.selectedInvoice
-        self.ui.cus_ct.setText(invoice_model.customer_id)
+        self.ui.cus_ct.setText(invoice_model.customer_name)
         staff_name = ""
         for e in self.controller.staffCtrl.listStaff:
             if e.staff_id == invoice_model.staff_id:
@@ -176,6 +182,7 @@ class InvoiceScreen (QWidget):
                 if (result):
                     self.refresh()
                     self.gotoCreateForm()
+        self.refresh()
     def refresh(self):
         self.controller.productCtrl.repository.reconnect()
         self.controller.fetchListInvoices()
@@ -207,7 +214,7 @@ class InvoiceCard(QWidget):
         super().__init__()
         self.ui = Ui_invoice_card()
         self.ui.setupUi(self)
-        self.ui.cus_ct.setText(self.data.customer_id)
+        self.ui.cus_ct.setText(self.data.customer_name)
         staffName = self.controller.repository.getStaffbyId(self.data.staff_id)
         self.ui.staff_ct.setText(staffName[0])
         self.ui.total_ct.setText(str(self.data.total))

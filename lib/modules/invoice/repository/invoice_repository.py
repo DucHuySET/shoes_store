@@ -40,14 +40,14 @@ class InvoiceRepository:
         return listDetail
 
     def updateInvoice(self, invoice):
-        query = "UPDATE INVOICE SET CustomerId = %s, StaffId = %s, Payments = %s, Date_ = %s, Total = %s WHERE InvoiceId = %s"
-        values = (invoice.customer_id, invoice.staff_id, invoice.payments, invoice.date_, invoice.total, invoice.invoice_id)
+        query = "UPDATE INVOICE SET CustomerName = %s, StaffId = %s, Payments = %s, Date_ = %s, Total = %s WHERE InvoiceId = %s"
+        values = (invoice.customer_name, invoice.staff_id, invoice.payments, invoice.date_, invoice.total, invoice.invoice_id)
         self.cursor.execute(query, values)
         self.db.commit()
 
     def createInvoice(self, invoice):
-        query = "INSERT INTO INVOICE (InvoiceId, CustomerId, StaffId, Payments, Date_, Total) VALUES (%s, %s, %s, %s, %s, %s)"
-        values = (invoice.invoice_id, invoice.customer_id, invoice.staff_id, invoice.payments, invoice.date_, invoice.total)
+        query = "INSERT INTO INVOICE (InvoiceId, CustomerName, StaffId, Payments, Date_, Total) VALUES (%s, %s, %s, %s, %s, %s)"
+        values = (invoice.invoice_id, invoice.customer_name, invoice.staff_id, invoice.payments, invoice.date_, invoice.total)
         self.cursor.execute(query, values)
         self.db.commit()
     def createInvoiceDetail(self, invoiceDetail):

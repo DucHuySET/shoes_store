@@ -84,8 +84,8 @@ class InvoiceController(QObject):
 
     def deleteInvoice(self, invoice_id):
         try:
-            self.repository.deleteInvoiceById(invoice_id)
             self.repository.deleteInvoiceDetailById(invoice_id)
+            self.repository.deleteInvoiceById(invoice_id)
             return True
         except:
             return False

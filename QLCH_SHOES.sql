@@ -9,13 +9,21 @@ CREATE TABLE CUSTOMER(
     CustomerPhone INT ,
     CustomerEmail VARCHAR(50) ,
     CustomerAddress NVARCHAR(100)
+);
+
+DROP TABLE IF EXISTS INVOICE_DETAILS;
+CREATE TABLE INVOICE_DETAILS (
+	ProductId INT ,
+    InvoiceId INT ,
+    Quantity INT ,
     
+    PRIMARY KEY(ProductId, InvoiceId)
 );
 
 DROP TABLE IF EXISTS INVOICE;
 CREATE TABLE INVOICE (
 	InvoiceId INT PRIMARY KEY,
-    CustomerId CHAR(4),
+    CustomerName NVARCHAR(50),
     StaffId CHAR(4) ,
     Payments NVARCHAR(50),
     Date_ DATETIME DEFAULT NOW(),
@@ -47,14 +55,7 @@ CREATE TABLE STAFF (
     isAdmin boolean
 );
 
-DROP TABLE IF EXISTS INVOICE_DETAILS;
-CREATE TABLE INVOICE_DETAILS (
-	ProductId INT ,
-    InvoiceId INT ,
-    Quantity INT ,
-    
-    PRIMARY KEY(ProductId, InvoiceId)
-);
+
 
 DROP TABLE IF EXISTS STORE;
 CREATE TABLE STORE (
@@ -106,7 +107,7 @@ VALUES (
 "ntt01",
 "123456",
 1
-)
+);
 
 INSERT INTO CUSTOMER (CustomerId, CustomerName, CustomerPhone, CustomerEmail, CustomerAddress)
-VALUES ('0', 'Customer', 123456789, 'cus_mail@gmail.com', ' ');
+VALUES ('0', 'Khách lẻ', 123456789, 'cus_mail@gmail.com', ' ');

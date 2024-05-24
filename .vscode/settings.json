@@ -17,6 +17,9 @@
         "./lib/modules/invoice/model",
         "./lib/modules/invoice/repository",
         "./lib/modules/invoice/controller",
-        "./lib/modules/invoice/view"
+        "./lib/modules/invoice/view",
+        "./lib/modules/customer/model",
+        "./lib/modules/customer/repository",
+        "./lib/modules/customer/controller"
     ]
 }

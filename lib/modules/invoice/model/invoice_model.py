@@ -1,7 +1,7 @@
 class InvoiceModel:
-    def __init__(self, invoice_id, customer_id, staff_id, payments, date_, total):
+    def __init__(self, invoice_id, customer_name, staff_id, payments, date_, total):
         self.invoice_id = invoice_id
-        self.customer_id = customer_id
+        self.customer_name = customer_name
         self.staff_id = staff_id
         self.payments = payments
         self.date_ = date_
