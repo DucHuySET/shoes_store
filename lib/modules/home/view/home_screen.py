@@ -26,10 +26,10 @@ from matplotlib.figure import Figure
 
 class HomeScreen(QMainWindow):
     def __init__(self, isAdmin, stackScr) -> None:
+        super().__init__()
         self.stackScr = stackScr
         self.isAdmin = isAdmin
         self.appController = AppController()
-        super().__init__()
         self.ui = view()
         self.ui.setupUi(self)
         self.controller = controller()
@@ -38,7 +38,7 @@ class HomeScreen(QMainWindow):
         self.invoiceView = InvoiceScreen()
         self.ui.horizontalLayout_2.addWidget(self.invoiceView)
         self.ui.actionLogout.triggered.connect(self.logout)
-        self.appController.signalRefreshStat.connect(self.showData)
+        self.appController.signalRefreshStat.connect(self.showDataFromAppCtrl)
 
         if (isAdmin):
             _translate = QtCore.QCoreApplication.translate
@@ -48,6 +48,12 @@ class HomeScreen(QMainWindow):
         self.ui.tabWidget.setCurrentIndex(0)
         self.showData()
     def showData(self):
+        self.appController.fetchData()
+        self.setUpChart()
+        self.plotData()
+        self.setStatistic()
+    def showDataFromAppCtrl(self, result):
+        print(result)
         self.appController.fetchData()
         self.setUpChart()
         self.plotData()

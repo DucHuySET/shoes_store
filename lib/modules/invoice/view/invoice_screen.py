@@ -47,6 +47,7 @@ class InvoiceScreen (QWidget):
             for i in range(len(self.controller.staffCtrl.listStaff)):
                 self.ui.combo_staff.addItem(self.controller.staffCtrl.listStaff[i].staff_name)
     def viewInvoice(self):
+        self.clearLayout(self.ui.gridLayout)
         if (len(self.controller.listInvoiceFull) > 0):
             for i in range(len(self.controller.listInvoiceFull)):
                 invoiceCard = InvoiceCard(self.controller.listInvoiceFull[i].invoice_model, self.controller)
@@ -74,6 +75,7 @@ class InvoiceScreen (QWidget):
         self.ui.list_prod_edit.addWidget(prodLine)
     def viewListInvoiceDetailEdit(self):
         self.clearLayout(self.ui.list_prod_edit)
+        self.controller.fetchListProduct()
         if (len(self.controller.listInvoiceDetail) > 0):
             for i in range(len(self.controller.listInvoiceDetail)):
                 invoiceCard = ProdLine(self.controller.listInvoiceDetail[i], self.controller)
@@ -81,7 +83,7 @@ class InvoiceScreen (QWidget):
             total = 0
             for ele in self.controller.listInvoiceDetail:
                 product = None
-                for e in self.controller.productCtrl.listProducts:
+                for e in self.controller.listProduct:
                     if (e.product_id == ele.product_id):
                         product = e
                 total += product.product_price * ele.quantity
@@ -155,6 +157,7 @@ class InvoiceScreen (QWidget):
                 break
         self.ui.combo_staff.setCurrentIndex(indexStaff)
         self.ui.combo_pay.setCurrentText(self.controller.selectedInvoice.payments)
+        self.ui.name_field.setText(self.controller.selectedInvoice.customer_name)
         self.controller.fetchListInvoiceDetail()
         self.viewListInvoiceDetailEdit()
     def setInvoiceDetailView(self):
@@ -232,7 +235,7 @@ class ProdLine(QWidget):
         super().__init__()
         self.ui = Ui_prod_line()
         self.ui.setupUi(self)
-        for e in self.controller.productCtrl.listProducts:
+        for e in self.controller.listProduct:
             if (e.product_id == self.data.product_id):
                 self.product = e
         # prodName = self.controller.productCtrl.repository.getNameById(self.data.product_id)

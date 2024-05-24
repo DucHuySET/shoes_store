@@ -10,6 +10,7 @@ from PyQt5.QtCore import  pyqtSignal, QObject
 
 ### Create Singleton app controller
 class AppController(QObject):
+  code = 0
   signalRefreshStat = pyqtSignal(object) 
   user = None
   revenue_by_month = [0] * 12
@@ -55,10 +56,12 @@ class AppController(QObject):
   def refreshHomeStat(self):
     self.db.reconnect()
     self.fetchData()
-    print(self.total_prod)
-    self.signalRefreshStat.emit(True)
+    self.signalRefreshStat.emit(ResultEmit())
 
   def __new__(cls):
     if not hasattr(cls, 'instance'):
       cls.instance = super(AppController, cls).__new__(cls)
     return cls.instance
+
+class ResultEmit:
+  result = True
